@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{pattern/page :: page(
+                                                ~{::title},
+                                                ~{:: #script},
+                                                ~{:: #home-header},
+                                                ~{:: #home-main-content}
+                                               )}">
+
+<head>
+    <title>Homepage</title>
+</head>
+<body>
+<div id="home-header">
+    Header of Home Page
+</div>
+
+<div id="home-nav" th:replace="~{pattern/page :: nav-default}">
+    Home Nav
+</div>
+
+<div id="home-main-content">
+    <h2>Добро пожаловать!</h2>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{pattern/page :: page(
+                                                ~{::title},
+                                                ~{:: #script},
+                                                ~{:: #home-header},
+                                                ~{:: #home-main-content}
+                                               )}">
+
+<head>
+    <title>Get all</title>
+    <th:block id="script">
+        <script type="text/javascript" src="../static/scriptByProject.js" th:src="@{/scriptByProject.js}"></script>
+    </th:block>
+</head>
+<body>
+<div id="home-header">
+    Header of Home Page
+</div>
+
+<div id="home-nav" th:replace="~{pattern/page :: nav-default}">
+    Home Nav
+</div>
+
+<div id="home-main-content">
+    <h2>Get all records</h2>
+    <div id="main-block">
+        <button type="button" class="btn btn-outline-secondary" onclick="getRecords()">Get all records</button>
+    </div>
+</div>
+
+</body>
+</html>

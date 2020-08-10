@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<!--  main-fragment (title, otherStaticResources, header, nav, mainContent, footer)  -->
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{pattern/page :: page(
+                                                ~{::title},
+                                                ~{:: #script},
+                                                ~{:: #home-header},
+                                                ~{:: #home-main-content}
+                                               )}">
+
+<head>
+    <title>Add new record</title>
+    <th:block id="script">
+        <script type="text/javascript" src="../static/scriptByProject.js" th:src="@{/scriptByProject.js}"></script>
+    </th:block>
+</head>
+<body>
+<div id="home-header">
+    Header of Home Page
+</div>
+
+<div id="home-nav" th:replace="~{pattern/page :: nav-default}">
+    Home Nav
+</div>
+
+<div id="home-main-content">
+    <h2>Add new record/records</h2>
+    <div id="main-block">
+        <div id=1 name="params">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label for="id-record" class="sr-only">Id record</label>
+                    <input type="text" class="form-control" id="id-record" placeholder="Id record" required="true">
+                </div>
+                <div class="input-group-prepend">
+                    <label for="value-record" class="sr-only">Note</label>
+                    <input type="text" class="form-control" id="value-record" placeholder="Note" required="true">
+                </div>
+                <button id="insert" type="button" class="btn btn-outline-secondary" onclick="createEl(this)">Add line</button>
+                <button id="remove" type="button" class="btn btn-outline-secondary" onclick="deleteEl(this)" disabled>Remove line</button>
+            </div>
+        </div>
+        <button type="button" class="btn btn-outline-secondary" onclick="addNewRecord()">Add record</button>
+    </div>
+</div>
+
+
+</body>
+</html>

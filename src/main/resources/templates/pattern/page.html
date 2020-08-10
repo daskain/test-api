@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/"
+      th:fragment="page (title, script, header, mainContent)">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:replace="${title}">Template</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/sidebar.css}" href="../../static/sidebar.css"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"
+          id="bootstrap-css">
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <th:block th:replace="${script} ?: ~{}"></th:block>
+</head>
+<div>
+    <header th:insert="${header} ?: ~{}">
+        <h2>Template</h2>
+    </header>
+    <nav th:insert="fragment/navbar">
+    </nav>
+    <p></p>
+
+
+    <div>
+        <div class="main">
+            <aside>
+                <div class="sidebar left ">
+                    <div class="user-panel">
+                        <div class="pull-left info">
+                            <p>Методы</p>
+                        </div>
+                    </div>
+                    <ul class="list-sidebar bg-defoult">
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#get" class="collapsed active">
+                                <i class="fa fa-files-o"></i>
+                                <span class="nav-label">GET</span>
+                                <span class="fa fa-chevron-left pull-right"></span>
+                            </a>
+                            <ul class="sub-menu collapse" id="get">
+                                <li><a href="/get_all">Get all</a></li>
+                                <li><a href="/get_by_id">Get by id</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#post" class="collapsed active">
+                                <i class="fa fa-files-o"></i>
+                                <span class="nav-label">POST</span>
+                                <span class="fa fa-chevron-left pull-right"></span>
+                            </a>
+                            <ul class="sub-menu collapse" id="post">
+                                <li><a href="/add">Add new record</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#put" class="collapsed active">
+                                <i class="fa fa-files-o"></i>
+                                <span class="nav-label">PUT</span>
+                                <span class="fa fa-chevron-left pull-right"></span>
+                            </a>
+                            <ul class="sub-menu collapse" id="put">
+                                <li><a href="/edit_by_id">Edit record by id</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="collapse" data-target="#delete" class="collapsed active">
+                                <i class="fa fa-files-o"></i>
+                                <span class="nav-label">DELETE</span>
+                                <span class="fa fa-chevron-left pull-right"></span>
+                            </a>
+                            <ul class="sub-menu collapse" id="delete">
+                                <li><a href="/delete_all">Delete all</a></li>
+                                <li><a href="/delete_by_id">Delete by id</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <div class="main_content" th:insert="${mainContent} ?: ~{}">
+
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.button-left').click(function () {
+            $('.sidebar').toggleClass('fliph');
+        });
+
+    });
+</script>
+
+</body>
+</html>
